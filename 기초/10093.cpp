@@ -7,7 +7,15 @@ int main(){
 
     if (a > b)
         swap(a, b);
-    printf("%lld\n", b - a - 1);
-    for (int i = a + 1; i < b; i++)
-        printf("%lld ", i);
+    
+    if(a == b)
+        printf("%d", 0);
+    else{
+        printf("%lld\n", b - a - 1);
+
+        for (long long i = a + 1; i < b; i++)
+            printf("%lld ", i);
+    }
+
+    
 }
