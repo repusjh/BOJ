@@ -80,8 +80,7 @@ node *insertBack(node *cur, char ch) {
 
 node *removeNode(node *cur) {
 	if (cur->before == NULL) {
-		delete cur;
-		return NULL;
+		return cur;
 	}
 	if (cur->next == NULL) {
 		cur = cur->before;
