@@ -1,27 +1,61 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-string str;
+string input;
+int total, sub;
 stack<char> st;
-int iron = 0;
 
-int main(){
-    cin >> str;
+int main() {
+	cin >> input;
+	for (int i = 0; i < input.length(); i++) {
+		switch (input[i]) {
+		case '(':
+			//out of bound
+			if (input[i + 1] == ')') {
+				st.push(2);
+				i++;
+			}
+			else
+				st.push('(');
+			break;
+		case ')':
+			if (st.top() != '(') {
+				cout << 0;
+				return 0;
+			}
+			while (0 <= st.top() && st.top() <= 9) {
+				sub += st.top();
+				st.pop();
+			}
+			st.pop();
+			st.push(sub * 2);
+			break;
+		case '[':
+			//out of bound
+			if (input[i + 1] == ']') {
+				st.push(3);
+				i++;
+			}
+			else
+				st.push('[');
+			break;
+		default:
+			if (st.top() != '[') {
+				cout << 0;
+				return 0;
+			}
+			while (0 <= st.top() && st.top() <= 9) {
+				sub += st.top();
+				st.pop();
+			}
+			st.pop();
+			st.push(sub * 3);
+			break;
+		}
+		sub = 0;
+	}
 
-    for (int i = str.length() - 1; i >= 0; i--){
-        if (str[i] == ')'){
-            if (str[i - 1] == '('){
-                iron += st.size();
-                i--;
-            }
-            else
-                st.push(1);
-        }
-        else{
-            iron++;
-            st.pop();
-        }
-    }
+	//肋给等 版快 盒扁贸府
+	cout << (int)st.top();
 
-    cout << iron << '\n';
 }
