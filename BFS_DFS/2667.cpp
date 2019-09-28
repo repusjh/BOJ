@@ -3,7 +3,6 @@ using namespace std;
 
 int n, danji;
 string line[26];
-int houses[26][26];
 bool visit[26][26];
 queue<pair<int, int>> q;
 vector<int> gagus;
