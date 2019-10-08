@@ -38,6 +38,8 @@ int main(){
             q.pop();
             if (cur.first.first == dst.first && cur.first.second == dst.second){
                 cout << cur.second << '\n';
+                while(!q.empty())
+                    q.pop();
                 break;
             }
             for (int i = 0; i < 8; i++){
@@ -45,6 +47,6 @@ int main(){
             }
 
         }
-        memset(visit, 0, sizeof(visit));
+        fill(&visit[0][0], &visit[0][0] + sizeof(visit)/sizeof(bool), 0);
     }
 }
